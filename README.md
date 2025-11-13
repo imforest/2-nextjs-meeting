@@ -2,6 +2,20 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### 환경 변수 설정
+
+음성 녹음 및 텍스트 변환 기능을 사용하려면 AssemblyAI API 키가 필요합니다.
+
+1. [AssemblyAI](https://www.assemblyai.com/)에서 계정을 생성하고 API 키를 발급받습니다.
+2. 프로젝트 루트에 `.env.local` 파일을 생성합니다.
+3. 다음 내용을 추가합니다:
+
+```env
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key_here
+```
+
+### 개발 서버 실행
+
 First, run the development server:
 
 ```bash
