@@ -37,11 +37,41 @@ Vercel 대시보드에서 다음 환경 변수를 설정해야 합니다:
 
 ## 문제 해결
 
-### 404 에러 발생 시
+### 404 NOT_FOUND 에러 발생 시 (단계별 해결)
 
-1. 환경 변수가 설정되었는지 확인
-2. 빌드가 성공했는지 확인
-3. 브라우저 콘솔에서 에러 확인
+**1단계: 빌드 로그 확인**
+
+- Vercel 대시보드 → Deployments → 최신 배포 클릭
+- Build Logs 탭에서 빌드가 성공했는지 확인
+- 빌드 실패 시 에러 메시지 확인
+
+**2단계: 환경 변수 확인**
+
+- Settings → Environment Variables
+- 다음 변수가 설정되어 있는지 확인:
+  - `OPENAI_API_KEY`
+  - `ASSEMBLYAI_API_KEY` (음성 변환 사용 시)
+- **중요**: Production, Preview, Development 모두에 적용되어야 함
+
+**3단계: 재배포**
+
+- 환경 변수 설정 후 반드시 재배포 필요
+- Deployments → 최신 배포의 "..." 메뉴 → Redeploy
+
+**4단계: Functions 확인**
+
+- Functions 탭에서 API 라우트가 제대로 배포되었는지 확인
+- `/api/ai/minutes`, `/api/transcribe`, `/api/webhook` 확인
+
+**5단계: 브라우저 확인**
+
+- 개발자 도구(F12) → Console 탭에서 에러 확인
+- Network 탭에서 실패한 요청 확인
+
+**6단계: 프로젝트 설정 확인**
+
+- Settings → General → Framework Preset이 "Next.js"로 설정되어 있는지 확인
+- Root Directory가 올바른지 확인 (보통 비어있어야 함)
 
 ### API 라우트 에러 시
 
